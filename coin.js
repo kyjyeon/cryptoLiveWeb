@@ -51,7 +51,7 @@ getRealtimeUSD = (USD) => {
   setInterval(() => {
     unirest.post("https://arses-crypto.p.rapidapi.com/getRealTimeRateAll/USD")
       .header("X-RapidAPI-Host", "arses-crypto.p.rapidapi.com")
-      .header("X-RapidAPI-Key", "3880c8b8a7msh40587cbfe91f3ecp1f991bjsn1267a9f9de47")
+      .header("X-RapidAPI-Key", "")
       .header("Content-Type", "application/x-www-form-urlencoded")
       .end(function (result) {
         //console.log(result.status, result.headers, result.body.detail.data[10]);
