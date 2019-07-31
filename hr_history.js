@@ -14,7 +14,7 @@ exports.history_hour = (requestNumber, unixTime, looping, tableName, currency_op
   var connection = mysql.createConnection({
     host: "kyjdb.cdzelssaqpcy.ap-northeast-2.rds.amazonaws.com",
     user: "kyjyeon",
-    password: "dus900809!",
+    password: "",
     database: "coin",
     port: 3400
   })
@@ -85,8 +85,8 @@ exports.history_hour = (requestNumber, unixTime, looping, tableName, currency_op
   }
   //Synchronize execution using 'async'
   async function insertData() {
-    for (var i = 0; i < loopRepeat; ++i) { // for 안에서 비동기 함수가 동작할 것이다.
-      await getRequest(i, timestamp);  //promise 를 리턴해야 await 로 사용 가능 하다.
+    for (var i = 0; i < loopRepeat; ++i) {
+      await getRequest(i, timestamp);
     };
   }
   insertData();
