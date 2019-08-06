@@ -13,6 +13,8 @@ const connection = mysql.createConnection({
     port: 3400
 });
 
+//Query for data connecting DB
+//Query functions for realtime data(1month, 24H, 1day, 7day)
 const query = util.promisify(connection.query).bind(connection);
 getLiveData_7DAY = (coin, currency)=>{
     table = "realtime_" + currency+"_"+coin;
@@ -43,7 +45,7 @@ getHistoryData = (coin, currency) =>{
     query();
 }
 
-//Get Data
+//Get Data, loop for wanted data from DB and send it to server
 router.get('/', (req,res)=>{
     for(let i=0;i<10; ++i){
         getLiveData(coinName[i], "USD")
