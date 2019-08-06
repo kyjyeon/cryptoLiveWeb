@@ -7,6 +7,7 @@ const coinFullName = require("./coinFullName");
 const events = require("events");
 var eventEmitter = new events.EventEmitter();
 
+//Event for realTime chart
 eventEmitter.on('realTimeUSD', ()=>{
   getRealtimeUSD(USD);
 })
@@ -14,6 +15,7 @@ eventEmitter.on('realTimeEUR', ()=>{
   getRealtimeEUR(EUR);
 })
 
+//Connection info
 var connection = mysql.createConnection({
   host: "kyjdb.cdzelssaqpcy.ap-northeast-2.rds.amazonaws.com",
   user: "kyjyeon",
@@ -45,7 +47,7 @@ insertData =(instance, time, currency) =>{
     console.log(instance.s + " " + currency + " "+ time + " realtime data inserted.....");
   });
 }
-
+//12 second interval api request
 getRealtimeUSD = (USD) => {
   setInterval(() => {
     unirest.post("https://arses-crypto.p.rapidapi.com/getRealTimeRateAll/USD")
@@ -105,7 +107,7 @@ getRealtimeUSD = (USD) => {
       })
   },12000)
 }
-
+//12second interval request
 getRealtimeEUR = (EUR)=>{
   setInterval(() => {
     unirest.post("https://arses-crypto.p.rapidapi.com/getRealTimeRateAll/USD")
