@@ -18,11 +18,7 @@ const PORT = process.env.PORT || 5000;
 //BodyParser Middleware
 app.use(bodyParser.json());
 
-// app.get("/api/table", (req,res,next)=>{
-//     res.send({})
-// })
-
-//Use Routes
+//Use Routes, receive data form DB
 app.use('/api/items', items);
 
 app.listen(PORT, ()=>console.log(`Server listening on PORT ${PORT}`));
