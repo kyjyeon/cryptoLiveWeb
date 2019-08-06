@@ -2,6 +2,7 @@ const axios = require("axios");
 const mysql = require("mysql");
 const util = require("util");
 
+//Function for getting historical data
 exports.history_hour = (requestNumber, unixTime, looping, tableName, currency_op, coin) => {
   var requestLimit = requestNumber; //Max 2000
   var table = tableName;
@@ -27,6 +28,7 @@ exports.history_hour = (requestNumber, unixTime, looping, tableName, currency_op
     })
   }
 
+  //Connect to DB and bind the connections into one
   const query = util.promisify(connection.query).bind(connection);
 
   //Request API
