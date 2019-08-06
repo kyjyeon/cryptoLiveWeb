@@ -3,13 +3,16 @@ const mysql = require("mysql");
 const Item = require("../../models/Items");
 const util = require("util");
 const router = express.Router();
+const coinName = require("../../coinName");
+
 const connection = mysql.createConnection({
     host: "kyjdb.cdzelssaqpcy.ap-northeast-2.rds.amazonaws.com",
     user: "kyjyeon",
-    password: "dus900809!",
+    password: "",
     database: "coin",
     port: 3400
 });
+
 const query = util.promisify(connection.query).bind(connection);
 getLiveData_7DAY = (coin, currency)=>{
     table = "realtime_" + currency+"_"+coin;
@@ -42,11 +45,13 @@ getHistoryData = (coin, currency) =>{
 
 //Get Data
 router.get('/', (req,res)=>{
-    getLiveData("ETH", "USD")
-    .then((result)=>{
-        res.json(result);
-    })
-    .catch(err=>res.status(404))
+    for(let i=0;i<10; ++i){
+        getLiveData(coinName[i], "USD")
+        .then((result)=>{
+            return res.json(result);
+        })
+        .catch(err=>res.status(404))
+    }
 })
 
 
