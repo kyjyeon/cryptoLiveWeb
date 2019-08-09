@@ -1,3 +1,4 @@
+//loop for collecting historical data api
 let mysql = require("mysql");
 const axios = require("axios");
 const unirest = require("unirest");
