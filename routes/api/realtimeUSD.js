@@ -8,7 +8,7 @@ const coinName = require("../../coinName");
 const connection = mysql.createConnection({
     host: "kyjdb.cdzelssaqpcy.ap-northeast-2.rds.amazonaws.com",
     user: "kyjyeon",
-    password: "dus900809!",
+    password: "",
     database: "coin",
     port: 3400
 });
@@ -50,6 +50,14 @@ loopLiveData = (currency)=>{
    forloop= async(currency) =>{
     for(let i=0;i<20; ++i){
         await getLiveData(coinName[i], currency)
+<<<<<<< HEAD
+=======
+
+//Get Data, loop for wanted data from DB and send it to server
+router.get('/', (req,res)=>{
+    for(let i=0;i<10; ++i){
+        getLiveData(coinName[i], "USD")
+>>>>>>> a311618132d72882ea46c41d777eae612c65cf21
         .then((result)=>{
             DataList.push(result[0]);
             return DataList;
