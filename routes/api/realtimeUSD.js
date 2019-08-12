@@ -45,36 +45,26 @@ getHistoryData = (coin, currency) =>{
     query();
 }
 
-<<<<<<< HEAD:routes/api/realtimeUSD.js
-
 loopLiveData = (currency)=>{
-    let DataList = []
+    var DataList = []
    forloop= async(currency) =>{
     for(let i=0;i<20; ++i){
         await getLiveData(coinName[i], currency)
-=======
-//Get Data, loop for wanted data from DB and send it to server
-router.get('/', (req,res)=>{
-    for(let i=0;i<10; ++i){
-        getLiveData(coinName[i], "USD")
->>>>>>> 1e0fb8c62f1aaef954c51abb2bb3d740736c65b3:routes/api/items.js
         .then((result)=>{
             DataList.push(result[0]);
             return DataList;
         })
     }
    }
-   return new Promise(resolve => {
-     forloop(currency)
-       .then(result => {
-         return resolve(DataList);
-       })
-       .catch(err => console.err(err));
-   });
+   return new Promise((resolve)=>{
+    forloop(currency)
+    .then(result=> {return resolve(DataList)})
+    .catch(err=>console.err(err));
+   })
 }
 
 //Get Data
-loopLiveData("USD")
+loopLiveData("EUR")
 .then((result)=>{
 return result;
 });
