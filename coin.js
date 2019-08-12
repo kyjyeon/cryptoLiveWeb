@@ -1,3 +1,4 @@
+//loop for collecting historical data api
 let mysql = require("mysql");
 const axios = require("axios");
 const unirest = require("unirest");
@@ -7,6 +8,7 @@ const coinFullName = require("./coinFullName");
 const events = require("events");
 var eventEmitter = new events.EventEmitter();
 
+//Event for realTime chart
 eventEmitter.on('realTimeUSD', ()=>{
   getRealtimeUSD(USD);
 })
@@ -14,6 +16,7 @@ eventEmitter.on('realTimeEUR', ()=>{
   getRealtimeEUR(EUR);
 })
 
+//Connection info
 var connection = mysql.createConnection({
   host: "kyjdb.cdzelssaqpcy.ap-northeast-2.rds.amazonaws.com",
   user: "kyjyeon",
@@ -45,7 +48,7 @@ insertData =(instance, time, currency) =>{
     console.log(instance.s + " " + currency + " "+ time + " realtime data inserted.....");
   });
 }
-
+//12 second interval api request
 getRealtimeUSD = (USD) => {
   setInterval(() => {
     unirest.post("https://arses-crypto.p.rapidapi.com/getRealTimeRateAll/USD")
@@ -105,7 +108,7 @@ getRealtimeUSD = (USD) => {
       })
   },12000)
 }
-
+//12second interval request
 getRealtimeEUR = (EUR)=>{
   setInterval(() => {
     unirest.post("https://arses-crypto.p.rapidapi.com/getRealTimeRateAll/USD")
@@ -168,25 +171,3 @@ getRealtimeEUR = (EUR)=>{
   eventEmitter.emit('realTimeUSD');
   eventEmitter.emit('realTimeEUR');
 
- // query("INSERT INTO " + table + "(_TIME,_PRICE,_BTC_PRICE, _VOLUME, _MARKETCAP, _MARKETCAP_RANK, _PRICE_CHANGE24H)" + " VALUES(" +"'2019-7-29 16:45:19',0.30962864517301,0.000032303409812584,533369000,13040529847.079,3,-0.44"+")");
-
-// // axios.get("https://min-api.cryptocompare.com/data/top/totalvol?limit=50&tsym=USD&api_key=9d15421656205828b15ff16d5e59a1d3ee25f257d772b58bed765cba82f7bc9d")
-// // .then(res=>{
-// //     res.data.Data.slice(0,50).forEach(element => {
-// //         console.log(JSON.stringify(element.CoinInfo.Name));
-// //     });
-// //     //console.log(JSON.stringify(res.data.Data.slice(0,49)));
-// // })
-
-
-  // unirest.post("https://arses-crypto.p.rapidapi.com/getRealTimeRateAll/USD")
-  // .header("X-RapidAPI-Host", "arses-crypto.p.rapidapi.com")
-  // .header("X-RapidAPI-Key", "3880c8b8a7msh40587cbfe91f3ecp1f991bjsn1267a9f9de47")
-  // .header("Content-Type", "application/x-www-form-urlencoded")
-  // .end(function (result) {
-  //     list = result.body.detail.data.slice(0, 10);
-  //     singleData = result.body.detail.data;
-  //     list.forEach((d)=>{
-  //       console.log(d.n);
-  //     })
-  // })

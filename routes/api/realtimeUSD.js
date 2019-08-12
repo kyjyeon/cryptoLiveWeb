@@ -13,6 +13,8 @@ const connection = mysql.createConnection({
     port: 3400
 });
 
+//Query for data connecting DB
+//Query functions for realtime data(1month, 24H, 1day, 7day)
 const query = util.promisify(connection.query).bind(connection);
 getLiveData_7DAY = (coin, currency)=>{
     table = "realtime_" + currency+"_"+coin;
@@ -43,12 +45,19 @@ getHistoryData = (coin, currency) =>{
     query();
 }
 
+<<<<<<< HEAD:routes/api/realtimeUSD.js
 
 loopLiveData = (currency)=>{
     let DataList = []
    forloop= async(currency) =>{
     for(let i=0;i<20; ++i){
         await getLiveData(coinName[i], currency)
+=======
+//Get Data, loop for wanted data from DB and send it to server
+router.get('/', (req,res)=>{
+    for(let i=0;i<10; ++i){
+        getLiveData(coinName[i], "USD")
+>>>>>>> 1e0fb8c62f1aaef954c51abb2bb3d740736c65b3:routes/api/items.js
         .then((result)=>{
             DataList.push(result[0]);
             return DataList;

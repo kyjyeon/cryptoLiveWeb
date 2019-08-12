@@ -4,6 +4,7 @@ import { Table } from "reactstrap";
 var coinName =  require("../../../coinName");
 var coinFullName =  require("../../../coinFullName");
 import socketIOClient from "socket.io-client";
+import realtimeUSD from "../../../"
 
 export default class table extends React.Component{
   constructor(){
@@ -44,9 +45,7 @@ export default class table extends React.Component{
   //     .catch(err => console.error(err));
   // };
   getData = () => {
-    fetch("/api/realtimeEUR")
-    .then(res => res.json())
-    .then(data=>{
+
       data.forEach((instance)=>{
         this.state.a.push(instance._PRICE.toLocaleString())
         this.state.b.push(instance._BTC_PRICE)
