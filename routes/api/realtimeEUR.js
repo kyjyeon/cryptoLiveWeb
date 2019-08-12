@@ -1,6 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
-const Item = require("../../models/Items");
+//const Item = require("../../models/Items");
 const util = require("util");
 const router = express.Router();
 const coinName = require("../../coinName");
@@ -8,7 +8,7 @@ const coinName = require("../../coinName");
 const connection = mysql.createConnection({
     host: "kyjdb.cdzelssaqpcy.ap-northeast-2.rds.amazonaws.com",
     user: "kyjyeon",
-    password: "",
+    password: "dus900809!",
     database: "coin",
     port: 3400
 });
@@ -43,16 +43,29 @@ getHistoryData = (coin, currency) =>{
     query();
 }
 
-//Get Data
-router.get('/', (req,res)=>{
-    for(let i=0;i<10; ++i){
-        getLiveData(coinName[i], "USD")
+loopLiveData = (currency)=>{
+    var DataList = []
+   forloop= async(currency) =>{
+    for(let i=0;i<20; ++i){
+        await getLiveData(coinName[i], currency)
         .then((result)=>{
-            return res.json(result);
+            DataList.push(result[0]);
+            return DataList;
         })
-        .catch(err=>res.status(404))
     }
-})
+   }
+   return new Promise((resolve)=>{
+    forloop(currency)
+    .then(result=> {return resolve(DataList)})
+    .catch(err=>console.err(err));
+   })
+}
+
+//Get Data
+loopLiveData("EUR")
+.then((result)=>{
+return result;
+});
 
 
 module.exports = router;
