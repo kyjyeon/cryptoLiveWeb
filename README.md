@@ -5,6 +5,6 @@ Stack<br>
 - RDS(MariaDB)<br>
 - DynamoDB
 - Node.js
-- React.js
+- React.js<br>
 <br><br>
 API Source: www.cryptocompare.com
