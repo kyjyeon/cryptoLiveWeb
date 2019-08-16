@@ -29,9 +29,6 @@ io.on("connection", socket =>{
 
 // app.use(bodyParser.json());
 
-// //Use Routes
-// app.use('/api/realtimeEUR', realtimeEUR);
-// app.use('/api/realtimeUSD', realtimeUSD)
 //Use Routes, receive data form DB
 app.use('/api/items', items);
 
