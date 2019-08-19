@@ -2,66 +2,84 @@ import React from "react";
 import { Table } from "reactstrap";
 var coinName =  require("../../../coinName");
 var coinFullName =  require("../../../coinFullName");
+const io = require('socket.io-client');
+const socket = io('http://localhost:3000');
+//import {socket} from "./AppNavbar";
 
 export default class table extends React.Component{
   state ={
-    Price : [],
-    BTC_Price: [],
-    Volume: [],
-    MarketCapital: [],
-    PriceChange: [],
+    Price : 0,
+    BTC_Price: 0,
+    Volume: 0,
+    MarketCapital: 0,
+    PriceChange: 0,
     a:[],
     b:[],
     c:[],
     d:[],
     e:[]
   }
-  
+  realtimedata = ()=>{
+    socket.on('USDrealtime',(data)=>{
+      console.log("realtimedata socket.on called");
+      console.log(data);
+          data.forEach(instance => {
+          this.state.a.push(instance._PRICE.toLocaleString());
+          this.state.b.push(instance._BTC_PRICE);
+          this.state.c.push(instance._VOLUME.toLocaleString());
+          this.state.d.push(instance._MARKETCAP.toLocaleString());
+          this.state.e.push(instance._PRICE_CHANGE24H);
+        })
+      
+        // // .then(data => {
+          this.setState({ Price: this.state.a });
+          this.setState({ BTC_Price: this.state.b });
+          this.setState({ Volume: this.state.c });
+          this.setState({ MarketCapital: this.state.d });
+          this.setState({ PriceChange: this.state.e })
+
+          this.setState({ a: [] });
+          this.setState({ b: [] });
+          this.setState({ c: [] });
+          this.setState({ d: [] });
+          this.setState({ e: [] })
+        //   .catch(err =>
+        //     console.error(err)
+        //   );
+        // });
+    });
+    socket.emit('realtimedata',12000)
+  }
+
   // getData = () => {
-  //     fetch("/api/items")
+  //     fetch("/api/realtimeUSD")
   //     .then(res => res.json())
   //     .then(data=>{
   //       data.forEach((instance)=>{
-  //         this.setState({Price: Price.push(instance[i]._PRICE.toLocaleString())}),
-  //         this.setState({BTC_Price: instance[0]._BTC_PRICE}),
-  //         this.setState({Volume: instance[0]._VOLUME.toLocaleString()}),
-  //         this.setState({MarketCapital: instance[0]._MARKETCAP.toLocaleString()}),
-  //         this.setState({PriceChange: instance[0]._PRICE_CHANGE24H})
+  //         this.state.a.push(instance._PRICE.toLocaleString())
+  //         this.state.b.push(instance._BTC_PRICE)
+  //         this.state.c.push(instance._VOLUME.toLocaleString())
+  //         this.state.d.push(instance._MARKETCAP.toLocaleString())
+  //         this.state.e.push(instance._PRICE_CHANGE24H)
   //       })
-  //       this.setState({Price: Price.push(instance[i]._PRICE.toLocaleString())}),
-  //       this.setState({BTC_Price: instance[0]._BTC_PRICE}),
-  //       this.setState({Volume: instance[0]._VOLUME.toLocaleString()}),
-  //       this.setState({MarketCapital: instance[0]._MARKETCAP.toLocaleString()}),
-  //       this.setState({PriceChange: instance[0]._PRICE_CHANGE24H})
-  //     })
+  //         return data;
+  //       })
+  //     .then((data)=>{
+  //       this.setState({Price: this.state.a})
+  //       this.setState({BTC_Price: this.state.b})
+  //       this.setState({Volume: this.state.c})
+  //       this.setState({MarketCapital: this.state.d})
+  //       this.setState({PriceChange: this.state.e})
   //     .catch(err => console.error(err));
-  // };
-  getData = () => {
-      fetch("/api/realtimeUSD")
-      .then(res => res.json())
-      .then(data=>{
-        data.forEach((instance)=>{
-          this.state.a.push(instance._PRICE.toLocaleString())
-          this.state.b.push(instance._BTC_PRICE)
-          this.state.c.push(instance._VOLUME.toLocaleString())
-          this.state.d.push(instance._MARKETCAP.toLocaleString())
-          this.state.e.push(instance._PRICE_CHANGE24H)
-        })
-          return data;
-        })
-      .then((data)=>{
-        this.setState({Price: this.state.a})
-        this.setState({BTC_Price: this.state.b})
-        this.setState({Volume: this.state.c})
-        this.setState({MarketCapital: this.state.d})
-        this.setState({PriceChange: this.state.e})
-      .catch(err => console.error(err));
-      });
-  }
+  //     });
+  // }
 
   componentDidMount() {
-    this.getData();
+    this.realtimedata();
   }
+  // componentWillUnmount() {
+  //   socket.off("USDrealtime");
+  // }
   render(){
   return (
     <div className="tableUSD"
@@ -268,7 +286,3 @@ export default class table extends React.Component{
   );
   }
 }
-//module.exports.table = () => {
-  
-//};
-// export default tableMain;

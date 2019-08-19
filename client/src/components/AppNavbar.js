@@ -7,14 +7,21 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Container
+  Container,
+  Table
 } from "reactstrap";
-
+import socketIOClient from "socket.io-client";
+var socket;
 class AppNavbar extends Component{
-    state = {
-        isOpen: false
-        
-    };
+    constructor() {
+        super();
+        this.state = {
+            isOpen: false,
+          endpoint: 'http://localhost:3000'
+        };
+    socket = socketIOClient(this.state.endpoint);
+      }
+    
     componentDidMount(){}
     //this.toggle = this.toggle.bind(this);
     toggle = () =>{
@@ -28,7 +35,7 @@ class AppNavbar extends Component{
         <div>
             <Navbar color="dark" dark expand="sm" className="mb-5">
                 <Container>
-                    <NavbarBrand href ="/">Menu</NavbarBrand>
+                    <NavbarBrand href="/">Menu</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -46,4 +53,4 @@ class AppNavbar extends Component{
     }
 }
 
-export default AppNavbar;
+export {AppNavbar, socket};

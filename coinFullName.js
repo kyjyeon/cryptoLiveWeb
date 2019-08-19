@@ -1,7 +1,7 @@
 module.exports = [
 "Bitcoin",
 "Ethereum",
-"XRP",
+"Ripple",
 "Bitcoin Cash",
 "Litecoin",
 "EOS",
@@ -17,7 +17,7 @@ module.exports = [
 "VeChain",
 "Ethereum Classic",
 "Maker",
-"Qtum",
+"Quantum",
 "Binance Coin",
 "Verge",
 "Lisk",

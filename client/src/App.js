@@ -1,4 +1,3 @@
-
 import {
   Collapse,
   Navbar,
@@ -15,13 +14,13 @@ import React from 'react';
 import classnames from 'classnames';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import socketIOClient from "socket.io-client";
+//import socketIOClient from "socket.io-client";
 import TableUSD from "./components/tableUSD";
-import TableEUR from "./components/tableEUR";
+//import TableEUR from "./components/tableEUR";
 // const tableDollar = tableUSD.table();
 //const tableEuro = tableEUR.table();
+//const socket = socketIOClient('http://localhost:3000');
 
-var socket;
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -31,9 +30,7 @@ export default class App extends React.Component {
       products: [],
       isOpen: false,
       activeTab: '1',
-      endpoint: 'http://localhost:3000'
-    };
-    socket= socketIOClient(this.state.endpoint);
+    }
   }
   toggle(tab) {
     this.setState({
@@ -93,27 +90,18 @@ export default class App extends React.Component {
                   USD
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  className={classnames({
-                    active: this.state.activeTab === "2"
-                  })}
-                  onClick={() => {
-                    this.toggle("2");
-                  }}
-                >
-                  EUR
-                </NavLink>
-              </NavItem>
             </Nav>
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1"><TableUSD /></TabPane>
-              <TabPane tabId="2"><TableEUR /></TabPane>
             </TabContent>
           </div>
         </div>
     );
   }
 }
+// function realtimedata(interval, cb){
+//   socket.on('USDrealtime', time)
+//   socket.emit('USDrealtime',12000)
+// }
 
-export{socket, App};
+export{App};
