@@ -63,8 +63,8 @@ export default class App extends React.Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
-                      <NavLink href="https://github.com/kyjyeon">
-                        Github
+                      <NavLink href="127.0.0.1:3001">
+                        SEARCH
                       </NavLink>
                     </NavItem>
                   </Nav>
