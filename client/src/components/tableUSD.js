@@ -94,7 +94,7 @@ export default class table extends React.Component{
       <Table bordered>
         <thead>
           <tr>
-          <td colSpan="6"><center>Date : {this.state.Date} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span font="color:green">Time :{this.state.Realtime}</span></center></td>
+          <td colSpan="6"><center>Date : {this.state.Date} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span style={{color:"green", fontSize:"x-large"}}>Time :{this.state.Realtime}</span></center></td>
           </tr>
           <tr>
             <th>Coin</th>
