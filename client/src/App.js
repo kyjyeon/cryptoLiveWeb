@@ -51,51 +51,58 @@ export default class App extends React.Component {
         style={{
           backgroundImage: "url(background.jpeg)",
           backgroundSize: "cover",
-          minHeight:"1000px",
+          minHeight: "1000px",
           height: "150%"
         }}
       >
-          <div>
-            <Navbar color="dark" dark expand="sm" className="mb-5">
-              <Container>
-                <NavbarBrand href="/">Menu</NavbarBrand>
-                <NavbarToggler onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
-                  <Nav className="ml-auto" navbar>
-                    <NavItem>
-                      <NavLink href="127.0.0.1:3001">
-                        SEARCH
-                      </NavLink>
-                    </NavItem>
-                  </Nav>
-                </Collapse>
-              </Container>
-            </Navbar>
-          </div>
-          <div
-            className="table"
-            style={{ 
-            }}
-          >
-            <Nav tabs>
-              <NavItem>
-                <NavLink
-                  className={classnames({
-                    active: this.state.activeTab === "1"
-                  })}
-                  onClick={() => {
-                    this.toggle("1");
-                  }}
-                >
-                  USD
-                </NavLink>
-              </NavItem>
-            </Nav>
-            <TabContent activeTab={this.state.activeTab}>
-              <TabPane tabId="1"><TableUSD /></TabPane>
-            </TabContent>
-          </div>
+        <div>
+          <Navbar color="dark" dark expand="sm" className="mb-5">
+            <Container>
+              <NavbarBrand href="/">Menu</NavbarBrand>
+              <NavbarToggler onClick={this.toggle} />
+              <Collapse isOpen={this.state.isOpen} navbar>
+                <Nav className="ml-auto" navbar>
+                  <NavItem>
+                    <NavLink href="127.0.0.1:3001">SEARCH</NavLink>
+                  </NavItem>
+                </Nav>
+              </Collapse>
+            </Container>
+          </Navbar>
         </div>
+        <div
+          className="table"
+          style={{
+            padding: "170px"
+          }}
+        >
+          <Nav tabs>
+            <NavItem>
+              <NavLink
+                className={classnames({
+                  active: this.state.activeTab === "1"
+                })}
+                onClick={() => {
+                  this.toggle("1");
+                }}
+                style={{
+                  padding: ".7rem 4rem",
+                  fontWeight: "bold",
+                  backgroundColor: "lightgreen",
+                  fontSize: "large"
+                }}
+              >
+                USD
+              </NavLink>
+            </NavItem>
+          </Nav>
+          <TabContent activeTab={this.state.activeTab}>
+            <TabPane tabId="1">
+              <TableUSD />
+            </TabPane>
+          </TabContent>
+        </div>
+      </div>
     );
   }
 }
