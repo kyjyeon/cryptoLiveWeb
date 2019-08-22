@@ -9,8 +9,8 @@ import {
   Container,
 } from "reactstrap";
 import { TabContent, TabPane} from 'reactstrap';
-
 import React from 'react';
+import "./components/tableUSD.css";
 import classnames from 'classnames';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -42,7 +42,6 @@ export default class App extends React.Component {
       });
     }
   }
-
   //renderInfos = ({ _TIME }) => <div key={_TIME}>{_TIME}</div>;
   render() {
     return (
@@ -58,12 +57,12 @@ export default class App extends React.Component {
         <div>
           <Navbar color="dark" dark expand="sm" className="mb-5">
             <Container>
-              <NavbarBrand href="/">Menu</NavbarBrand>
+              <NavbarBrand href="/">MENU</NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                   <NavItem>
-                    <NavLink href="127.0.0.1:3001">SEARCH</NavLink>
+                    <NavLink href="127.0.0.1:3000/search">SEARCH</NavLink>
                   </NavItem>
                 </Nav>
               </Collapse>
@@ -73,7 +72,9 @@ export default class App extends React.Component {
         <div
           className="table"
           style={{
-            padding: "170px"
+            padding: "220px",
+            paddingBottom: "180px",
+            paddingTop:"100px"
           }}
         >
           <Nav tabs>
@@ -98,7 +99,7 @@ export default class App extends React.Component {
           </Nav>
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="1">
-              <TableUSD />
+              <TableUSD className="tbodyTable"/>
             </TabPane>
           </TabContent>
         </div>
