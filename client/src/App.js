@@ -10,7 +10,6 @@ import {
 } from "reactstrap";
 import { TabContent, TabPane} from 'reactstrap';
 import React from 'react';
-import "./components/tableUSD.css";
 import classnames from 'classnames';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";

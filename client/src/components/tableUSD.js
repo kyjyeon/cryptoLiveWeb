@@ -1,15 +1,30 @@
 import React from "react";
 import { Table } from "reactstrap";
-import "./tableUSD.css"
+
 var coinName =  require("../../../coinName");
 var coinFullName =  require("../../../coinFullName");
 const io = require('socket.io-client');
 const socket = io('http://localhost:3000');
 //import {socket} from "./AppNavbar";
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
+
 
 
 export default class table extends React.Component{
+  
+  toggle = this.toggle.bind(this);
+  toggle1 = this.toggle1.bind(this);
+  toggle2 = this.toggle2.bind(this);
+  toggle3 = this.toggle3.bind(this);
+  toggle4 = this.toggle4.bind(this);
+  toggle5 = this.toggle5.bind(this);
   state ={
+    collapse: false,
+    collapse1: false,
+    collapse2: false,
+    collapse3: false,
+    collapse4: false,
+    collapse5: false,
     Price : 0,
     Time: 0,
     Volume: 0,
@@ -43,6 +58,25 @@ export default class table extends React.Component{
     tdstyle_24h18: {fontSize: "x-large", textAlign:"center"},
     tdstyle_24h19: {fontSize: "x-large", textAlign:"center"}
   }
+  toggle() {
+    this.setState(state => ({ collapse: !state.collapse }));
+  }
+  toggle1() {
+    this.setState(state => ({ collapse1: !state.collapse1 }));
+  }
+  toggle2() {
+    this.setState(state => ({ collapse2: !state.collapse2 }));
+  }
+  toggle3() {
+    this.setState(state => ({ collapse3: !state.collapse3 }));
+  }
+  toggle4() {
+    this.setState(state => ({ collapse4: !state.collapse4 }));
+  }
+  toggle5() {
+    this.setState(state => ({ collapse5: !state.collapse5 }));
+  }
+
   realtimedata = ()=>{
     socket.on('USDrealtime',(data)=>{
       console.log("realtimedata socket.on called");
@@ -248,19 +282,75 @@ export default class table extends React.Component{
           <td colSpan="6" 
           style={{borderBottomWidth: "initial",
           borderBottomColor: "crimson",
-          fontSize: "x-large",
-          color: "darkblue",
-          padding: "6px",
-          fontWeight: "bold"}}
-          ><center>{this.state.Date} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>UTC {this.state.Realtime}</span></center></td>
+          fontSize: "large",
+          color: "black",
+          padding: "6px", textAlign:"end", fontWeight:"bold",}}
+          ><center style={{borderBottomWidth: "initial",
+          borderBottomColor: "crimson",
+          fontSize: "xx-large",
+          color: "darkgreen", 
+          fontWeight:"bold",
+          }}>TOP 20 Coin LiveChart</center>UTC : {this.state.Realtime}</td>
           </tr>
           <tr>
-            <th>Coin</th>
-            <th>Fullname</th>
-            <th>Price</th>
-            <th>Volume</th>
-            <th>Marketcap</th>
-            <th>Price Change 24H</th>
+            <th><Button color="primary" onClick={this.toggle} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white" }}>Coin</Button>
+        <Collapse isOpen={this.state.collapse}>
+          <Card>
+            <CardBody>
+            Abbreviation of the Coin
+            </CardBody>
+          </Card>
+        </Collapse></th>
+            <th>
+              <Button color="primary" onClick={this.toggle1} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "55px"  }}>Fullname</Button>
+        <Collapse isOpen={this.state.collapse1}>
+          <Card>
+            <CardBody>
+            Full name of the Coin
+            </CardBody>
+          </Card>
+        </Collapse>
+        </th>
+            <th>
+              <Button color="primary" onClick={this.toggle2} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "48px" }}>Price</Button>
+        <Collapse isOpen={this.state.collapse2}>
+          <Card>
+            <CardBody>
+            Current Price of the Coin
+            </CardBody>
+          </Card>
+        </Collapse>
+        </th>
+            <th>
+              <Button color="primary" onClick={this.toggle3} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "75px" }}>Volume</Button>
+        <Collapse isOpen={this.state.collapse3}>
+          <Card>
+            <CardBody>
+            The number of shares traded on the day. If volumes are high, this means that there are a lot of shares being traded of the particular company
+            </CardBody>
+          </Card>
+        </Collapse>
+        </th>
+            <th>
+              <Button color="primary" onClick={this.toggle4} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "80px" }}>Market Capital</Button>
+        <Collapse isOpen={this.state.collapse4}>
+          <Card>
+            <CardBody>
+            The total market value of the shares outstanding of a publicly traded company. Equal to the share price times the number of shares outstanding
+            </CardBody>
+          </Card>
+        </Collapse>
+        </th>
+            <th>
+              <Button color="primary" onClick={this.toggle5} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "50px"  }}>Price Change 24H</Button>
+        <Collapse isOpen={this.state.collapse5}>
+          <Card>
+            <CardBody>
+            Price change percentage for the last 24 hours
+            </CardBody>
+          </Card>
+        </Collapse>
+        </th>
           </tr>
         </thead>
         <tbody>
