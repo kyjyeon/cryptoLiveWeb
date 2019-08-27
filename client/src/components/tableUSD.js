@@ -8,8 +8,6 @@ const socket = io('http://localhost:3000');
 //import {socket} from "./AppNavbar";
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 
-
-
 export default class table extends React.Component{
   
   toggle = this.toggle.bind(this);
@@ -261,9 +259,7 @@ export default class table extends React.Component{
   componentDidMount() {
     this.realtimedata();
   }
-  // componentWillUnmount() {
-  //   socket.off("USDrealtime");
-  // }
+
   render(){
     const tdstyle=  {fontSize: "x-large", textAlign:"center"}
   return (
