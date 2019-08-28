@@ -209,7 +209,7 @@ export default class table extends React.Component{
           else if(this.state.PriceChange[18] <0){
             this.setState({tdstyle_24h18 : {fontSize: "x-large", textAlign:"center", backgroundColor:"red", color:"aliceblue"}});
           }
-          else if(this.state.PriceChange[18] ==0){
+          else if(this.state.PriceChange[18] ===0){
             this.setState({tdstyle_24h18 : {fontSize: "x-large", textAlign:"center", backgroundColor:"skyblue", color:"aliceblue"}});
           }
           if(this.state.PriceChange[19] > 0){
