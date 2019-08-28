@@ -4,12 +4,12 @@ import { Table } from "reactstrap";
 var coinName =  require("../../../coinName");
 var coinFullName =  require("../../../coinFullName");
 const io = require('socket.io-client');
-const socket = io('http://localhost:3000');
+const socket = io('http://15.164.93.211:3000');
 //import {socket} from "./AppNavbar";
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 
 export default class table extends React.Component{
-  
+
   toggle = this.toggle.bind(this);
   toggle1 = this.toggle1.bind(this);
   toggle2 = this.toggle2.bind(this);
@@ -231,7 +231,6 @@ export default class table extends React.Component{
     });
     socket.emit('realtimedata',1000)
   }
-  
 
   // getData = () => {
   //     fetch("/api/realtimeUSD")

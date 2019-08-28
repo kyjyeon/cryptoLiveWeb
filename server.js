@@ -11,8 +11,8 @@ var coinFullName =  require("./coinFullName");
 const PORT = 4001;
 // const server = app.listen(PORT);
 var server = require('http').Server(app);
-const io = require("socket.io")(server);server.listen(PORT);
-
+// const io = require("socket.io").listen(server);
+const io =require("socket.io")(server);server.listen(PORT)
 const connection = mysql.createConnection({
     host: "kyjdb.cdzelssaqpcy.ap-northeast-2.rds.amazonaws.com",
     user: "kyjyeon",
