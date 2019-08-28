@@ -297,7 +297,7 @@ export default class table extends React.Component{
           </Card>
         </Collapse></th>
             <th>
-              <Button color="primary" onClick={this.toggle1} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "55px"  }}>Fullname</Button>
+              <Button color="primary" onClick={this.toggle1} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",}}>Fullname</Button>
         <Collapse isOpen={this.state.collapse1}>
           <Card>
             <CardBody>
@@ -307,7 +307,7 @@ export default class table extends React.Component{
         </Collapse>
         </th>
             <th>
-              <Button color="primary" onClick={this.toggle2} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "48px" }}>Price</Button>
+              <Button color="primary" onClick={this.toggle2} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",}}>Price</Button>
         <Collapse isOpen={this.state.collapse2}>
           <Card>
             <CardBody>
@@ -317,7 +317,7 @@ export default class table extends React.Component{
         </Collapse>
         </th>
             <th>
-              <Button color="primary" onClick={this.toggle3} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "75px" }}>Volume</Button>
+              <Button color="primary" onClick={this.toggle3} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",}}>Volume</Button>
         <Collapse isOpen={this.state.collapse3}>
           <Card>
             <CardBody>
@@ -327,7 +327,7 @@ export default class table extends React.Component{
         </Collapse>
         </th>
             <th>
-              <Button color="primary" onClick={this.toggle4} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "80px" }}>Market Capital</Button>
+              <Button color="primary" onClick={this.toggle4} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",}}>Market Capital</Button>
         <Collapse isOpen={this.state.collapse4}>
           <Card>
             <CardBody>
@@ -337,7 +337,7 @@ export default class table extends React.Component{
         </Collapse>
         </th>
             <th>
-              <Button color="primary" onClick={this.toggle5} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",marginLeft: "50px"  }}>Price Change 24H</Button>
+              <Button color="primary" onClick={this.toggle5} style={{ margin: '1rem', textAlign:"center", backgroundColor: "cornflowerblue", color:"white", borderColor:"white",}}>Price Change 24H</Button>
         <Collapse isOpen={this.state.collapse5}>
           <Card>
             <CardBody>
