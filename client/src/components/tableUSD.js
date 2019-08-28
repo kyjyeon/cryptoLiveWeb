@@ -277,7 +277,7 @@ export default class table extends React.Component{
           <td colSpan="6" 
           style={{borderBottomWidth: "initial",
           borderBottomColor: "crimson",
-          fontSize: "x-large",
+          fontSize: "larger",
           color: "black",
           padding: "6px", textAlign:"end", fontWeight:"bold",}}
           ><center style={{borderBottomWidth: "initial",
