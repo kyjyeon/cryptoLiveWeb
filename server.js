@@ -16,7 +16,7 @@ const io =require("socket.io")(server);server.listen(PORT)
 const connection = mysql.createConnection({
     host: "kyjdb.cdzelssaqpcy.ap-northeast-2.rds.amazonaws.com",
     user: "kyjyeon",
-    password: "dus900809!",
+    password: "",
     database: "coin",
     port: 3400
 });
