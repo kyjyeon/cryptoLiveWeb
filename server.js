@@ -5,11 +5,13 @@ const util = require("util");
 const app = express();
 var coinName =  require("./coinName");
 var coinFullName =  require("./coinFullName");
+
 // const realtimeEUR = require("./routes/api/realtimeEUR")
 // const realtimeUSD = require("./routes/api/realtimeUSD");
 const PORT = 4001;
-const server = app.listen(PORT);
-const io = require("socket.io").listen(server);
+// const server = app.listen(PORT);
+var server = require('http').Server(app);
+const io = require("socket.io")(server);server.listen(PORT);
 
 const connection = mysql.createConnection({
     host: "kyjdb.cdzelssaqpcy.ap-northeast-2.rds.amazonaws.com",
