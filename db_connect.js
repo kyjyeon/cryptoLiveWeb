@@ -1,3 +1,4 @@
+//Code for implementing data into DB using multiple event calling for faster insertion
 //Module Import
 const axios = require("axios");
 const mysql = require("mysql");
@@ -77,4 +78,4 @@ ohlcvOn = ( coin ) => {
 // ohlcvOn("TUSD")
 // ohlcvOn("ZEC");
 // ohlcvOn("ONT");
-ohlcvOn("XMR");
+//ohlcvOn("XMR");
